@@ -12,12 +12,13 @@ import java.util.Scanner;
  */
 public class POE_Part1 {
 
-    public static void main(String[] args) { 
+   public static void main(String[] args) { 
        //Declarations
        String username;
        String password;
        String firstname;
        String lastname;
+       int attempts=0;
        
         //create an object of the scanner
         Scanner input=new Scanner(System.in);
@@ -34,12 +35,15 @@ public class POE_Part1 {
         
          System.out.println("Enter Last Name:");
         lastname=input.next();
-        
+               
         //Pass the external class
         Login log= new Login();
         
          //method to check the password and username
         log.checkUsername(username);
         log.checkPasswordComplexity(password);
+        
+        //register the user
+        log.registerUser(username,password);
     }
 }
