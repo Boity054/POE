@@ -3,28 +3,51 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.poe_part1;
-
+import java.util.Scanner;
 /**
  *
  * @author RC_Student_lab
  */
 public class Login {
+    private String username;
+    private String password;
+    
+    //Getters and Setters
+    public String getUsername(){
+        return username;
+    }
+    public void setUsername(String u){
+        username=u;
+    }
+    public String getPassword(){
+        return username;
+    }
+    public void setPassword(String p){
+        password=p;
+    }
+    
+    //method to verify the login details
+    public static boolean loginUser(String username, String password){
+       return username.equals(username) && password.equals(password);
+    }
+
      //method to check the username 
     public static boolean checkUsername(String username){
          //check if the user name meets the conditions
+         
          if (username.equals("Boi_ty")){
              System.out.println("Username successfully captured.");
          }
          else{
             System.out.println("Username is not correctly formatted, please ensure that your username contains an underscore is no more than 5 characters in length.");
          }
-      return username.contains("_") && username.length()<=5;
+         return username.contains("_") && username.length()<=5;
     }
     
     //method to check for password
     public static boolean checkPasswordComplexity(String password){
         //check if the password is complex
-        if(password.equals("#Bvi0let12")){
+        if(password.equals("*Bvi012let")){
             System.out.println("Password successfully captured.");
         }
         else{
@@ -45,4 +68,4 @@ public class Login {
             return "The two above conditions have been met and the user has been registered successfully.";
         }
     }
-}
+}   

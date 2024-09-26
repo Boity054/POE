@@ -13,37 +13,41 @@ import java.util.Scanner;
 public class POE_Part1 {
 
    public static void main(String[] args) { 
+       //Pass the external class
+        Login log= new Login();
+        
+        log.setUsername("Boi_ty");
+        log.setPassword("*Bvi012let");
        //Declarations
+        String firstname;
+       String lastname;
        String username;
        String password;
-       String firstname;
-       String lastname;
-       int attempts=0;
        
         //create an object of the scanner
         Scanner input=new Scanner(System.in);
         
-        //prompt the user for both username and password
-        System.out.println("Enter username:");
-         username=input.nextLine();
-        
-        System.out.println("Enter password:");
-        password=input.next();
-        
-         System.out.println("Enter First Name:");
+        //prompt the user for username,password, Firstname and lastname
+          System.out.println("Enter First Name:");
         firstname=input.next();
         
          System.out.println("Enter Last Name:");
         lastname=input.next();
+       
+        do{
+        System.out.println("Enter username:");
+        username=input.next();
+        }while (log.checkUsername(username));
+        
+       do{
+        System.out.println("Enter password:");
+        password=input.next();
+       }while(log.checkPasswordComplexity(password));
                
-        //Pass the external class
-        Login log= new Login();
-        
-         //method to check the password and username
-        log.checkUsername(username);
-        log.checkPasswordComplexity(password);
-        
         //register the user
-        log.registerUser(username,password);
+        String registrationMessage=log.registerUser(username,password);
+        System.out.println(registrationMessage);
+        
+        
     }
 }
