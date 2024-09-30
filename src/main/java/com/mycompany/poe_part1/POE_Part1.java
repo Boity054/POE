@@ -16,8 +16,6 @@ public class POE_Part1 {
        //Pass the external class
         Login log= new Login();
         
-       // log.setUsername("Boi_ty");
-       // log.setPassword("*Bvi012let");
        //Declarations
         String firstname;
        String lastname;
@@ -27,21 +25,26 @@ public class POE_Part1 {
         //create an object of the scanner
         Scanner input=new Scanner(System.in);
         
-        //prompt the user for username,password, Firstname and lastname
+        //prompt the user to enter the firstname. lastname, username and password
           System.out.println("Enter First Name:");
         firstname=input.next();
+        log.setFirstname(firstname);
         
          System.out.println("Enter Last Name:");
         lastname=input.next();
+        log.setLastname(lastname);
+       
        
         do{
         System.out.println("Enter username:");
         username=input.next();
+        log.setUsername(username);
         }while (log.checkUsername(username));
         
        do{
         System.out.println("Enter password:");
         password=input.next();
+        log.setPassword(password);
        }while(log.checkPasswordComplexity(password));
                
         //register the user

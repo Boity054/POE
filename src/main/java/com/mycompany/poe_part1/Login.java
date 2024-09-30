@@ -42,12 +42,19 @@ public class Login {
     
     //method to verify the login details
     public static boolean loginUser(String username, String password){
-         return username.equals(username) && password.equals(password);
+        do{
+        if(username.equals(username) && password.equals(password)){
+           return true;
+        }
+        else{
+            return false;
+        } 
+        }while(false);
     }
     
     public String returnLoginStatus(boolean successfulLogin){
         if (successfulLogin){
-            return "Welcome "+ getFirstname() + getLastname()+",it is great to see you again.";
+            return "Welcome "+ getFirstname() +" "+ getLastname()+",it is great to see you again.";
         }
         else{
             return "Username or password incorrect, try again.";
@@ -58,7 +65,7 @@ public class Login {
     public static boolean checkUsername(String username){
          //check if the user name meets the conditions
          
-         if (username.equals("Boi_ty")){
+         if (username.equals(username.contains("_") && username.length()<=5)){
              System.out.println("Username successfully captured.");
          }
          else{
@@ -70,7 +77,7 @@ public class Login {
     //method to check for password
     public static boolean checkPasswordComplexity(String password){
         //check if the password is complex
-        if(password.equals("*Bvi012let")){
+        if(password.equals(password.length()<=8 && password.matches("[A-Z]") && password.matches("[0-9]") && password.contains("~!@#$%^&*()_-?/<>:}{]["))){
             System.out.println("Password successfully captured.");
         }
         else{
@@ -80,11 +87,8 @@ public class Login {
     }
       //method to register the user
     public static String registerUser(String username, String password){
-        if(!checkUsername(username)){
-            return "The username is incorrectly formatted.";
-        }
-        else if(!checkPasswordComplexity(password)){
-            return "The password does not meet the complexity requirements.";
+        if(!checkUsername(username) && !checkPasswordComplexity(password)){
+            return "The username is incorrectly formatted or The password does not meet the complexity requirements.";
         }
         else{
             return "The two above conditions have been met and the user has been registered successfully.";
