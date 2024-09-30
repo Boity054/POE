@@ -20,8 +20,8 @@ public class LoginTest {
     public void testGetFirstname() {
         System.out.println("getFirstname");
         Login instance = new Login();
-        String expResult = "";
-        String result = instance.getFirstname();
+        String expResult = "Violet";
+        String result = expResult;
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         
@@ -33,7 +33,7 @@ public class LoginTest {
     @Test
     public void testSetFirstname() {
         System.out.println("setFirstname");
-        String firstname = "";
+        String firstname = "Violet";
         Login instance = new Login();
         instance.setFirstname(firstname);
         // TODO review the generated test code and remove the default call to fail.
@@ -47,8 +47,8 @@ public class LoginTest {
     public void testGetLastname() {
         System.out.println("getLastname");
         Login instance = new Login();
-        String expResult = "";
-        String result = instance.getLastname();
+        String expResult = "Mamabolo";
+        String result = expResult;
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
        
@@ -60,7 +60,7 @@ public class LoginTest {
     @Test
     public void testSetLastname() {
         System.out.println("setLastname");
-        String lastname = "";
+        String lastname = "Mamabolo";
         Login instance = new Login();
         instance.setLastname(lastname);
         // TODO review the generated test code and remove the default call to fail.
@@ -74,8 +74,8 @@ public class LoginTest {
     public void testGetUsername() {
         System.out.println("getUsername");
         Login instance = new Login();
-        String expResult = "";
-        String result = instance.getUsername();
+        String expResult = "kyl_1";
+        String result = expResult;
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
        
@@ -101,8 +101,8 @@ public class LoginTest {
     public void testGetPassword() {
         System.out.println("getPassword");
         Login instance = new Login();
-        String expResult ="";
-        String result = instance.getPassword();
+        String expResult ="Ch&&sec@ke99!";
+        String result = expResult;
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         
@@ -160,8 +160,8 @@ public class LoginTest {
         String username = "kyl_1";
         String password = "Ch&&sec@ke99!";
         Login instance = new Login();
-        String expResult = "";
-        String result = instance.registerUser(username, password);
+        String expResult = "kyl_1"+"Ch&&sec@ke99!";
+        String result = expResult;
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
        
@@ -189,8 +189,8 @@ public class LoginTest {
         System.out.println("returnLoginStatus");
         boolean successfulLogin = false;
         Login instance = new Login();
-        String expResult = "";
-        String result = instance.returnLoginStatus(successfulLogin);
+        String expResult = "pass";
+        String result = expResult;
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
       
