@@ -16,8 +16,8 @@ public class POE_Part1 {
        //Pass the external class
         Login log= new Login();
         
-        log.setUsername("Boi_ty");
-        log.setPassword("*Bvi012let");
+       // log.setUsername("Boi_ty");
+       // log.setPassword("*Bvi012let");
        //Declarations
         String firstname;
        String lastname;
@@ -48,6 +48,12 @@ public class POE_Part1 {
         String registrationMessage=log.registerUser(username,password);
         System.out.println(registrationMessage);
         
+        // login user
+        boolean LoginSuccess= log.loginUser(username,password);
+        System.out.println(LoginSuccess);
         
+        //dispaly  login Status
+        String loginMessage=log.returnLoginStatus(LoginSuccess);
+        System.out.println(loginMessage);
     }
 }
