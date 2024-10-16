@@ -19,7 +19,7 @@ public class POE_Part1 {
        //Declarations
         String firstname;
        String lastname;
-       String username;
+       String username ;
        String password;
        
         //create an object of the scanner
@@ -34,29 +34,29 @@ public class POE_Part1 {
         lastname=input.next();
         log.setLastname(lastname);
        
-       
-        do{
         System.out.println("Enter username:");
         username=input.next();
         log.setUsername(username);
-        }while (log.checkUsername(username));
         
-       do{
         System.out.println("Enter password:");
         password=input.next();
         log.setPassword(password);
-       }while(log.checkPasswordComplexity(password));
+        
                
         //register the user
-        String registrationMessage=log.registerUser(username,password);
-        System.out.println(registrationMessage);
+        String registration=log.registerUser(firstname,lastname,username,password);
+        System.out.println("Registration: "+ registration);
         
-        // login user
-        boolean LoginSuccess= log.loginUser(username,password);
-        System.out.println(LoginSuccess);
+        //login user
+      
+        System.out.println("Enter username to login:");
+        username=input.next();
+        System.out.println("Enter password to login:");
+        password=input.next();
         
         //dispaly  login Status
-        String loginMessage=log.returnLoginStatus(LoginSuccess);
-        System.out.println(loginMessage);
+        boolean loginSuccessful= log.loginUser(firstname, lastname,username,password);
+       String loginMessage=log.returnLoginStatus(loginSuccessful);
+       System.out.println(loginMessage);
     }
 }

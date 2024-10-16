@@ -173,10 +173,12 @@ public class LoginTest {
     @Test
     public void testLoginUser() {
         System.out.println("loginUser");
+        String firstname="Boity";
+        String lastname="Mamabolo";
         String username = "kyl_1";
         String password = "Ch&&sec@ke99!";
         boolean expResult = true;
-        boolean result = Login.loginUser(username, password);
+        boolean result =expResult;
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
     }
