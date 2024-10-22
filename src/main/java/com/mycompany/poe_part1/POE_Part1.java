@@ -5,6 +5,8 @@
 package com.mycompany.poe_part1;
 
 import java.util.Scanner;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -24,23 +26,25 @@ public class POE_Part1 {
        
         //create an object of the scanner
         Scanner input=new Scanner(System.in);
+        JDialog dialog = new JDialog();
+        dialog.setAlwaysOnTop(true);
         
         //prompt the user to enter the firstname. lastname, username and password
           System.out.println("Enter First Name:");
         firstname=input.next();
-        log.setFirstname(firstname);
+        
         
          System.out.println("Enter Last Name:");
         lastname=input.next();
-        log.setLastname(lastname);
+        
        
         System.out.println("Enter username:");
         username=input.next();
-        log.setUsername(username);
+        
         
         System.out.println("Enter password:");
         password=input.next();
-        log.setPassword(password);
+      
         
                
         //register the user
@@ -48,15 +52,22 @@ public class POE_Part1 {
         System.out.println("Registration: "+ registration);
         
         //login user
-      
         System.out.println("Enter username to login:");
         username=input.next();
         System.out.println("Enter password to login:");
         password=input.next();
         
         //dispaly  login Status
-        boolean loginSuccessful= log.loginUser(firstname, lastname,username,password);
+        boolean loginSuccessful= log.loginUser(username,password);
        String loginMessage=log.returnLoginStatus(loginSuccessful);
        System.out.println(loginMessage);
+       
+       if(loginSuccessful){
+           JOptionPane.showMessageDialog(dialog, "Welcome to nuiu");
+       }
+       
+       
+       input.close();
+       dialog.dispose();
     }
 }
