@@ -57,4 +57,8 @@ public class Login {
             return "Username or password incorrect, try again.";
         }
     }
+
+    void setFirstname(String firstname) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }   
