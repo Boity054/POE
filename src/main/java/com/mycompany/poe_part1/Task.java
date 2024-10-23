@@ -43,4 +43,9 @@ public class Task {
      public String printTaskDetails(){
          return "Task Status: " + taskStatus + "\nDeveloper Details: " + developerDetails + "\nTask Number: " + taskNumber + "\nTask Name: " + taskname + "\nTask Description: " + description + "\nTask ID: " + taskID + "\nDuration: " + taskDuration + " hours";
      }
+      
+     //return estimated hours
+      public int returnTotalHours() {
+        return taskDuration;
+      }
 }
