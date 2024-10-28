@@ -7,6 +7,7 @@ package com.mycompany.poe_part1;
 import java.util.Scanner;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import java.util.ArrayList; 
 
 /**
  *
@@ -15,7 +16,7 @@ import javax.swing.JOptionPane;
 public class POE_Part1 {
 
    public static void main(String[] args) { 
-       //Pass the external class
+       //Pass the Login external class
         Login log= new Login();
         
        //Declarations
@@ -32,21 +33,13 @@ public class POE_Part1 {
         //prompt the user to enter the firstname. lastname, username and password
           System.out.println("Enter First Name:");
         firstname=input.next();
-        
-        
          System.out.println("Enter Last Name:");
         lastname=input.next();
-        
-       
         System.out.println("Enter username:");
         username=input.next();
-        
-        
         System.out.println("Enter password:");
         password=input.next();
-      
-        
-               
+         
         //register the user
         String registration=log.registerUser(firstname,lastname,username,password);
         System.out.println("Registration: "+ registration);
@@ -65,19 +58,13 @@ public class POE_Part1 {
        if(loginSuccessful){
            JOptionPane.showMessageDialog(dialog, "Welcome to  EasyKanBan.");
        } 
-       else{
-           JOptionPane.showMessageDialog(dialog, "Try again!");
-       }
-        // calling the Task external class
-        Task ask=new Task();
-        int[] tasks={};
+        // Use an ArrayList to store tasks
+        ArrayList<Task> taskList = new ArrayList<>();
          String[] taskStatus={"To Do","Doing","Done"};
-         
-          //display the options the user can choose from
-     while(loginSuccessful){
+     
+     //display the options the user can choose from
+    while(loginSuccessful){
     int option = Integer.parseInt(JOptionPane.showInputDialog(null,"===Menu===\n(1)Add Tasks\n(2)Show Reports\n(3)Quit\nEnter the number of the option: "));
-   
-     while(option !=0){
        switch(option){
            case 1:
                //promts the user to enter number tasks
@@ -89,7 +76,11 @@ public class POE_Part1 {
             String developerDetails = JOptionPane.showInputDialog("Enter Developer Details:");
             int taskDuration = Integer.parseInt(JOptionPane.showInputDialog("Enter Task Duration (in hours):"));
             int seclection= JOptionPane.showOptionDialog(null,"Enter Task Status:","Task Status",JOptionPane.DEFAULT_OPTION,JOptionPane.QUESTION_MESSAGE,null,taskStatus,taskStatus[0]);
-               
+            
+              // Create a new Task object and add it to the list
+               Task ask = new Task(taskname, i + 1, description, developerDetails, taskDuration);
+                taskList.add(ask);
+             
                 //Check if the descrioption meets the requriements
             if(!ask.checkTaskDescription(description)){
                 JOptionPane.showMessageDialog(null, "Task Description is too long, try again.");
@@ -98,9 +89,10 @@ public class POE_Part1 {
             }
              // using a method that adds all the hours of each tasks duration
         JOptionPane.showMessageDialog(null, "Total hours across all tasks: " + ask.returnTotalHours());
-               }
+               
           // Printing the details of the captured tasks
             JOptionPane.showMessageDialog(null,"Tasks successfully captured:" + ask.printTaskDetails());
+               }
                break;
            case 2:
                //Displays the report
@@ -115,8 +107,6 @@ public class POE_Part1 {
               break;
        }  
        }
-      }
-       
        input.close();
        dialog.dispose();
     }
