@@ -58,41 +58,14 @@ public class POE_Part1 {
        if(loginSuccessful){
            JOptionPane.showMessageDialog(dialog, "Welcome to  EasyKanBan.");
        } 
-        // Use an ArrayList to store tasks
-        ArrayList<Task> taskList = new ArrayList<>();
-         String[] taskStatus={"To Do","Doing","Done"};
-     
+      Task ask=new Task();
      //display the options the user can choose from
     while(loginSuccessful){
     int option = Integer.parseInt(JOptionPane.showInputDialog(null,"===Menu===\n(1)Add Tasks\n(2)Show Reports\n(3)Quit\nEnter the number of the option: "));
        switch(option){
            case 1:
-               //promts the user to enter number tasks
-               int numTasks= Integer.parseInt(JOptionPane.showInputDialog(null,"How many tasks do you wish to enter?"));
-               for (int i = 0; i < numTasks; i++) {
-            //promt user input
-            String taskname = JOptionPane.showInputDialog("Enter Task Name: " + (i + 1) );
-            String description = JOptionPane.showInputDialog("Enter Task Description:");
-            String developerDetails = JOptionPane.showInputDialog("Enter Developer Details:");
-            int taskDuration = Integer.parseInt(JOptionPane.showInputDialog("Enter Task Duration (in hours):"));
-            int seclection= JOptionPane.showOptionDialog(null,"Enter Task Status:","Task Status",JOptionPane.DEFAULT_OPTION,JOptionPane.QUESTION_MESSAGE,null,taskStatus,taskStatus[0]);
-            
-              // Create a new Task object and add it to the list
-               Task ask = new Task(taskname, i + 1, description, developerDetails, taskDuration);
-                taskList.add(ask);
-             
-                //Check if the descrioption meets the requriements
-            if(!ask.checkTaskDescription(description)){
-                JOptionPane.showMessageDialog(null, "Task Description is too long, try again.");
-            }else{
-                continue;
-            }
-             // using a method that adds all the hours of each tasks duration
-        JOptionPane.showMessageDialog(null, "Total hours across all tasks: " + ask.returnTotalHours());
-               
-          // Printing the details of the captured tasks
-            JOptionPane.showMessageDialog(null,"Tasks successfully captured:" + ask.printTaskDetails());
-               }
+               //Display add tasks
+               ask.addTasks();
                break;
            case 2:
                //Displays the report
