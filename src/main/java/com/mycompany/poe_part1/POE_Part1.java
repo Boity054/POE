@@ -58,7 +58,10 @@ public class POE_Part1 {
        if(loginSuccessful){
            JOptionPane.showMessageDialog(dialog, "Welcome to  EasyKanBan.");
        } 
+       
+       //pass the Task external class
       Task ask=new Task();
+      
      //display the options the user can choose from
     while(loginSuccessful){
     int option = Integer.parseInt(JOptionPane.showInputDialog(null,"===Menu===\n(1)Add Tasks\n(2)Show Reports\n(3)Quit\nEnter the number of the option: "));
