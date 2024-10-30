@@ -35,9 +35,9 @@ public class POE_Part1 {
         firstname=input.next();
          System.out.println("Enter Last Name:");
         lastname=input.next();
-        System.out.println("Enter username:");
+        System.out.println("Create username:");
         username=input.next();
-        System.out.println("Enter password:");
+        System.out.println("Create password:");
         password=input.next();
          
         //register the user
