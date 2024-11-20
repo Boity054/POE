@@ -30,7 +30,7 @@ public class ShowReport {
         count++;
     }*/
     
-    //Dsplay all of the tasks
+    //method to display all of the tasks
       public String displayAllTasks() {
         StringBuilder report = new StringBuilder("All taskes are caputured:\n");
         for (int i = 0; i < count; i++) {
@@ -43,7 +43,7 @@ public class ShowReport {
         return report.toString();
     }
     
-   //display the for all tasks with the status of done
+   //method to display the for all tasks with the status of done
     public String displayStatusDone(String[] developer,String[] taskname,int[] taskDuration){
         StringBuilder report=new StringBuilder("Tasks with status 'Done':\n");
         for (int i=0;i<count;i++){
@@ -56,7 +56,7 @@ public class ShowReport {
         return report.toString();
     }
     
-    //diaply the longest duration
+    //method to diaply the longest duration
     public String longestDuration(String[] developer,String[] taskname,int[] taskDuration){
         if (count == 0) {
             return "No tasks accessible.";
@@ -71,7 +71,44 @@ public class ShowReport {
         return "Task with longest duration: \nDeveloper: "+ developer[maxDurationIndex] +"\n Task Duration: " + taskDuration[maxDurationIndex];
     }
     
+    //method to search task by name 
+    public String searchTaskname(String[] taskname,String searchname){
+        for(int i=0 ;i < count ;i++){
+           if(taskname[i].equalsIgnoreCase(searchname)) {
+               return "Task found\n Taskname: "+ taskname[i] + "\nDeveloper: " + developer[i] +"Task Status: "+ taskStatus[i];
+           }
+        }
+        return "Task not available";
+    }
     
+    //method to search for all tasks assigned to the developer
+    public int searchTaskByDeveloper(String[] developer,String searchDeveloper){
+        StringBuilder report = new StringBuilder("Tasks assigned to " + developer + ":\n");
+        for (int i = 0; i < count; i++) {
+            if (developer[i].equalsIgnoreCase(searchDeveloper)) {
+                report.append("Task Name: ").append(taskname[i]).append("\n Task Status: ").append(taskStatus[i]).append("\n");
+            }
+        }
+    return -1;
+    }
+    
+    //method to delete a task
+    public String deleteTask(String[] taskname,String deleteTaskname){
+           for (int i = 0; i < count; i++) {
+            if (taskname[i].equalsIgnoreCase(deleteTaskname)) {
+                for (int k = i; k < count - 1; k++) {
+                    taskname[k] = taskname[k + 1];
+                    developer[k] = developer[k + 1];
+                    taskID[k] = taskID[k + 1];
+                    taskDuration[k] = taskDuration[k + 1];
+                    taskStatus[k] = taskStatus[k + 1];
+                }
+                count--;
+                return "Task successfully deleted";
+            }
+        }
+        return "Task not Deleted";
+    }
     
     
 }

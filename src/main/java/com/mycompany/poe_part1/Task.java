@@ -125,32 +125,36 @@ public */
                                                                      6.Delete tasks
                                                                      7.back""")); 
         switch (option) {
-               /* case 1:
+               case 1:
             // displays all the tasks captured
             JOptionPane.showMessageDialog(null,show.displayAllTasks());
+            
                 case 2:
             // displays all the DONE tasks
-            JOptionPane.showMessageDialog(null, show.displayStatusDone());
+            JOptionPane.showMessageDialog(null, show.displayStatusDone(developerDetails,taskname,taskDuration));
+            
                 case 3:
             //display the longest duration of tasks
-            JOptionPane.showMessageDialog(null,show.displayTaskWithLongestDuration());
+            JOptionPane.showMessageDialog(null,show.longestDuration(developerDetails,taskname,taskDuration));
+            
                 case 4:
-            // Search task by task name
-            String taskName = JOptionPane.showInputDialog("Enter task name to search:");
-            JOptionPane.showMessageDialog(null,show.searchTaskByName(taskName));
+            // Search task by task name 
+            String searchname = JOptionPane.showInputDialog("Enter task name to search:");
+            JOptionPane.showMessageDialog(null,show.searchTaskname(taskname,searchname));
+            
                 case 5:
             // search task by developer names
-            String developer = JOptionPane.showInputDialog("Enter developer name to search:");
-            JOptionPane.showMessageDialog(null,show.searchTasksByDeveloper(developer));
+             String searchDeveloper = JOptionPane.showInputDialog("Enter developer name to search:");
+            JOptionPane.showMessageDialog(null,show.searchTaskByDeveloper(developerDetails,searchDeveloper));
+
                 case 6:
             // Enable user to delete the capured tasks
-            String taskName = JOptionPane.showInputDialog("Enter task name to delete:");
-            JOptionPane.showMessageDialog(null, show.deleteTaskByName(taskName));
+           String deleteTaskname= JOptionPane.showInputDialog("Enter task name to delete:");
+            JOptionPane.showMessageDialog(null, show.deleteTask(taskname,deleteTaskname));
             default:
               JOptionPane.showMessageDialog(null,"Invalid option");
               break;
-                 }// endwhile*/
+                 }
             }
         }
-       }
 }

@@ -72,7 +72,7 @@ public class POE_Part1 {
                break;
            case 2:
                //Displays the report
-               JOptionPane.showMessageDialog(null,"Coming soon!");
+              ask.showReport();
                break;
            case 3:
                //exits the system
