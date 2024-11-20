@@ -130,7 +130,7 @@ public */
             JOptionPane.showMessageDialog(null,show.displayAllTasks());
                 case 2:
             // displays all the DONE tasks
-            JOptionPane.showMessageDialog(null, show.displayTasksWithStatusDone());
+            JOptionPane.showMessageDialog(null, show.displayStatusDone());
                 case 3:
             //display the longest duration of tasks
             JOptionPane.showMessageDialog(null,show.displayTaskWithLongestDuration());

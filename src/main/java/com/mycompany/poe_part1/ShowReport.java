@@ -31,7 +31,17 @@ public class ShowReport {
     }*/
     
     //Dsplay all of the tasks
-    
+      public String displayAllTasks() {
+        StringBuilder report = new StringBuilder("All taskes are caputured:\n");
+        for (int i = 0; i < count; i++) {
+            report.append("\nTask Name: ").append(taskname[i])
+                    .append("\nDeveloper: ").append(developer[i])
+                    .append("\nTask ID: ").append(taskID[i])
+                    .append("\nTask Duration: ").append(taskDuration[i])
+                    .append("\nTask Status: ").append(taskStatus[i]).append("\n");
+        }
+        return report.toString();
+    }
     
    //display the for all tasks with the status of done
     public String displayStatusDone(String[] developer,String[] taskname,int[] taskDuration){
@@ -45,6 +55,23 @@ public class ShowReport {
         }
         return report.toString();
     }
+    
+    //diaply the longest duration
+    public String longestDuration(String[] developer,String[] taskname,int[] taskDuration){
+        if (count == 0) {
+            return "No tasks accessible.";
+        }
+
+        int maxDurationIndex = 0;
+        for (int i = 1; i < count; i++) {
+            if (taskDuration[i] > taskDuration[maxDurationIndex]) {
+                maxDurationIndex = i;
+            }
+        }
+        return "Task with longest duration: \nDeveloper: "+ developer[maxDurationIndex] +"\n Task Duration: " + taskDuration[maxDurationIndex];
+    }
+    
+    
     
     
 }
