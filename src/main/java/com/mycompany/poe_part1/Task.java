@@ -113,6 +113,8 @@ public */
                   
       }
       }
+      
+      //method for the show report 
        public void showReport() {
         while (true) {
            int option = Integer.parseInt(JOptionPane.showInputDialog("""
@@ -130,7 +132,7 @@ public */
             JOptionPane.showMessageDialog(null,show.displayAllTasks());
             
                 case 2:
-            // displays all the DONE tasks
+            // displays all the Done tasks
             JOptionPane.showMessageDialog(null, show.displayStatusDone(developerDetails,taskname,taskDuration));
             
                 case 3:
@@ -139,18 +141,20 @@ public */
             
                 case 4:
             // Search task by task name 
+                    
             String searchname = JOptionPane.showInputDialog("Enter task name to search:");
-            JOptionPane.showMessageDialog(null,show.searchTaskname(taskname,searchname));
+           show.searchTaskname(taskname,searchname);
             
                 case 5:
-            // search task by developer names
-             String searchDeveloper = JOptionPane.showInputDialog("Enter developer name to search:");
-            JOptionPane.showMessageDialog(null,show.searchTaskByDeveloper(developerDetails,searchDeveloper));
+            // search task by developer names 
+            String input=JOptionPane.showInputDialog("Enter developer name to search:");
+            show.searchTaskByDeveloper(developerDetails,input);
 
                 case 6:
             // Enable user to delete the capured tasks
            String deleteTaskname= JOptionPane.showInputDialog("Enter task name to delete:");
-            JOptionPane.showMessageDialog(null, show.deleteTask(taskname,deleteTaskname));
+           show.deleteTask(taskname,deleteTaskname);
+            
             default:
               JOptionPane.showMessageDialog(null,"Invalid option");
               break;

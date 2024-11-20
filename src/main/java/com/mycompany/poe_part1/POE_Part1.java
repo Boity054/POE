@@ -64,7 +64,7 @@ public class POE_Part1 {
       
      //display the options the user can choose from
     while(loginSuccessful){
-    int option = Integer.parseInt(JOptionPane.showInputDialog(null,"===Menu===\n(1)Add Tasks\n(2)Show Reports\n(3)Quit\nEnter the number of the option: "));
+    int option = Integer.parseInt(JOptionPane.showInputDialog(null,"===Menu===\n1.Add Tasks\n2.Show Reports\n3.Quit\nEnter the number of the option: "));
        switch(option){
            case 1:
                //Display add tasks
