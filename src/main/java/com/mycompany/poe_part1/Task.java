@@ -12,15 +12,18 @@ import javax.swing.*;
  * @author RC_Student_lab
 public */
  class Task {
-     //private declarations
-     private static String[] taskname;
+     //private declarations;
+     private static String[] taskname ;
      private static int[] taskNumber;
      private static String[] description;
-     private static String[] developerDetails;
+     static String[] developerDetails;
      private static int[] taskDuration;
      private static String[] taskID;
      private static String[] taskStatus;
- 
+
+ //passing the Show Report class in the Task class
+     private ShowReport show = new ShowReport();
+     
 //check task Description
     public boolean checkTaskDescription(String description){
         return description.length()<50;
@@ -110,4 +113,44 @@ public */
                   
       }
       }
+       public void showReport() {
+        while (true) {
+           int option = Integer.parseInt(JOptionPane.showInputDialog("""
+                                                                     Choose a report option:
+                                                                     1.Display All the task
+                                                                     2.Display task with Done status
+                                                                     3.Display longest duration of tasks
+                                                                     4.Search task by name
+                                                                     5.Search task by developer name
+                                                                     6.Delete tasks
+                                                                     7.back""")); 
+        switch (option) {
+               /* case 1:
+            // displays all the tasks captured
+            JOptionPane.showMessageDialog(null,show.displayAllTasks());
+                case 2:
+            // displays all the DONE tasks
+            JOptionPane.showMessageDialog(null, show.displayTasksWithStatusDone());
+                case 3:
+            //display the longest duration of tasks
+            JOptionPane.showMessageDialog(null,show.displayTaskWithLongestDuration());
+                case 4:
+            // Search task by task name
+            String taskName = JOptionPane.showInputDialog("Enter task name to search:");
+            JOptionPane.showMessageDialog(null,show.searchTaskByName(taskName));
+                case 5:
+            // search task by developer names
+            String developer = JOptionPane.showInputDialog("Enter developer name to search:");
+            JOptionPane.showMessageDialog(null,show.searchTasksByDeveloper(developer));
+                case 6:
+            // Enable user to delete the capured tasks
+            String taskName = JOptionPane.showInputDialog("Enter task name to delete:");
+            JOptionPane.showMessageDialog(null, show.deleteTaskByName(taskName));
+            default:
+              JOptionPane.showMessageDialog(null,"Invalid option");
+              break;
+                 }// endwhile*/
+            }
+        }
+       }
 }
