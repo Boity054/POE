@@ -13,16 +13,15 @@ import javax.swing.*;
 public */
  class Task {
      //private declarations;
-     private static String[] taskname ;
-     private static int[] taskNumber;
-     private static String[] description;
-     static String[] developerDetails;
-     private static int[] taskDuration;
-     private static String[] taskID;
-     private static String[] taskStatus;
-
- //passing the Show Report class in the Task class
-     private ShowReport show = new ShowReport();
+     private Task[] tasks;
+     private static int numTasks=100;
+     private static String[]taskname = new String[numTasks] ;
+     private static int[] taskNumber= new int[numTasks] ;
+     private static String[] description= new String[numTasks] ;
+     static String[] developerDetails= new String[numTasks] ;
+     private static int[] taskDuration= new int[numTasks] ;
+     private static String[] taskID= new String[numTasks] ;
+     private static String[] taskStatus= new String[numTasks] ;
      
 //check task Description
     public boolean checkTaskDescription(String description){
@@ -113,7 +112,86 @@ public */
                   
       }
       }
-      
+       
+      //method to display all of the tasks
+      public String displayAllTasks() {
+        StringBuilder report = new StringBuilder("All taskes are caputured:\n");
+        for (int i = 0; i < taskname.length; i++) {
+            report.append("\nTask Name: ").append(taskname[i])
+                    .append("\nDeveloper: ").append(developerDetails[i])
+                    .append("\nTask ID: ").append(taskID[i])
+                    .append("\nTask Duration: ").append(taskDuration[i])
+                    .append("\nTask Status: ").append(taskStatus[i]).append("\n");
+        }
+        return report.toString();
+    }
+    
+   //method to display the for all tasks with the status of done
+    public String displayStatusDone(String[] developerDetails,String[] taskname,int[] taskDuration){
+        StringBuilder report=new StringBuilder("Tasks with status 'Done':\n");
+        for (int i=0;i<taskStatus.length;i++){
+            if (taskStatus[i].equalsIgnoreCase("Done")){
+                report.append("Developer: ").append(developerDetails[i])
+                       .append("Task Name: ").append(taskname[i])
+                       .append("Task Duration: ").append(taskDuration[i]).append("\n");
+            }
+        }
+        return report.toString();
+    }
+    
+    //method to diaply the longest duration
+    public String longestDuration(String[] developerDetails,String[] taskname,int[] taskDuration){
+        if (taskDuration.length == 0) {
+            return "No tasks accessible.";
+        }
+
+        int maxDurationIndex = 0;
+        for (int i = 1; i < taskDuration.length; i++) {
+            if (taskDuration[i] > taskDuration[maxDurationIndex]) {
+                maxDurationIndex = i;
+            }
+        }
+        return "Task with longest duration: \nDeveloper: "+ developerDetails[maxDurationIndex] +"\n Task Duration: " + taskDuration[maxDurationIndex];
+    }
+    
+    //method to search task by name 
+    public String searchTaskname(String[] taskname,String searchname){
+        for(int i=0 ;i < taskname.length ;i++){
+           if(taskname[i].equalsIgnoreCase(searchname)) {
+               return "Task found\n Taskname: "+ taskname[i] + "\nDeveloper: " + developerDetails[i] +"Task Status: "+ taskStatus[i];
+           }
+        }
+        return "Task not available";
+    }
+    
+    //method to search for all tasks assigned to the developer
+    public String searchTaskByDeveloper(String[] developerDetails,String searchDeveloper){
+        StringBuilder report = new StringBuilder("Tasks assigned to " + developerDetails + ":\n");
+        for (int i = 0; i < developerDetails.length; i++) {
+            if (developerDetails[i].equalsIgnoreCase(searchDeveloper)) {
+                report.append("Task Name: ").append(taskname[i]).append("\n Task Status: ").append(taskStatus[i]).append("\n");
+            }
+        }
+    return report.toString();
+    }
+    
+    //method to delete a task
+    public String deleteTask(String[] taskname,String deleteTaskname){
+           for (int i = 0; i < taskname.length; i++) {
+            if (taskname[i].equalsIgnoreCase(deleteTaskname)) {
+                for (int k = i; k < taskname.length - 1; k++) {
+                    taskname[k] = taskname[k + 1];
+                    developerDetails[k] = developerDetails[k + 1];
+                    taskID[k] = taskID[k + 1];
+                    taskDuration[k] = taskDuration[k + 1];
+                    taskStatus[k] = taskStatus[k + 1];
+                }
+                i--;
+                return "Task successfully deleted";
+            }
+        }
+        return "Task not Deleted";
+    }
       //method for the show report 
        public void showReport() {
         while (true) {
@@ -129,36 +207,42 @@ public */
         switch (option) {
                case 1:
             // displays all the tasks captured
-            JOptionPane.showMessageDialog(null,show.displayAllTasks());
+            JOptionPane.showMessageDialog(null,displayAllTasks());
+            break;
             
                 case 2:
             // displays all the Done tasks
-            JOptionPane.showMessageDialog(null, show.displayStatusDone(developerDetails,taskname,taskDuration));
+            JOptionPane.showMessageDialog(null, displayStatusDone(developerDetails,taskname,taskDuration));
+            break;
             
                 case 3:
             //display the longest duration of tasks
-            JOptionPane.showMessageDialog(null,show.longestDuration(developerDetails,taskname,taskDuration));
+            JOptionPane.showMessageDialog(null,longestDuration(developerDetails,taskname,taskDuration));
+            break;
             
                 case 4:
             // Search task by task name 
                     
             String searchname = JOptionPane.showInputDialog("Enter task name to search:");
-           show.searchTaskname(taskname,searchname);
+           searchTaskname(taskname,searchname);
+           break;
             
                 case 5:
             // search task by developer names 
-            String input=JOptionPane.showInputDialog("Enter developer name to search:");
-            show.searchTaskByDeveloper(developerDetails,input);
+            String serachDev=JOptionPane.showInputDialog("Enter developer name to search:");
+            searchTaskByDeveloper(developerDetails,serachDev);
+            break;
 
                 case 6:
             // Enable user to delete the capured tasks
-           String deleteTaskname= JOptionPane.showInputDialog("Enter task name to delete:");
-           show.deleteTask(taskname,deleteTaskname);
+           String deleteTask= JOptionPane.showInputDialog("Enter task name to delete:");
+           deleteTask(taskname,deleteTask);
+           break;
             
             default:
               JOptionPane.showMessageDialog(null,"Invalid option");
               break;
                  }
             }
-        }
+}
 }
